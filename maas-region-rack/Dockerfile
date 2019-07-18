@@ -1,6 +1,6 @@
 FROM solita/ubuntu-systemd:18.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ENV container docker
 
 # pre apt install locales and tzdata
