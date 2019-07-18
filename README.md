@@ -125,4 +125,4 @@ $ sudo docker exec maas-region-rack maas admin boot-resources import
 Access the UI
 =============================
 
-Visit http://<docker host>:5240/MAAS/ and login as admin/admin.
+Visit http://{{docker host}}:5240/MAAS/ and login as admin/admin.
