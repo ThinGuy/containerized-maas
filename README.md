@@ -17,7 +17,14 @@ You can build your own following the directions below or run the demo image from
 
 ## Run from dockerhub
 ```
-sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} craigbender/demo:magenta-box.01
+sudo docker run \
+	-d \
+	-p 5240:5240 \
+	-v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+	-v /tmp:/images \
+	--privileged \
+	--name ${NAME} \
+	craigbender/demo:magenta-box.01
 ```
 ## Build your own
 #### Building Container
@@ -38,7 +45,7 @@ $ sudo docker run -d -p 8888:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileg
 ##### Running with local storage
 In order to import custom images into MAAS. (i.e. Run this way if you plan to deploy windows, esx, rhel, etc)
 ```
-$ sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp/images:/images --privileged --name ${NAME} "magenta-maas:1.0"
+$ sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp:/images --privileged --name ${NAME} "magenta-maas:1.0"
 ```
 ### Retrieving MAAS Details
 ***
