@@ -1,16 +1,17 @@
-<img src="https://raw.githubusercontent.com/ThinGuy/svg/master/maas-docker.svg?sanitize=true">
+<img width=200 src="https://raw.githubusercontent.com/ThinGuy/svg/master/maas-docker.svg?sanitize=true">
 
 # Overview
-MAAS Region/Rack Controller combo running in a systemd-enabled docker container.
+Provides a [MAAS](https://maas.io) [Region](https://docs.maas.io/2.6/en/installconfig-region?_ga=2.81383703.1615335063.1563384348-431451618.1562184839)/[Rack](https://docs.maas.io/2.6/en/installconfig-rack?_ga=2.77126805.1615335063.1563384348-431451618.1562184839) Controller combo running in a systemd-enabled docker container.
 
 You can build your own following the directions below or run the demo image from docker hub
 
 **Caveats:** 
  - This is a work in progress
  - This has not been through formal QA testing
+ - This image is not officially supported by Canonical
  - This runs as a privileged  container
- - This is not suitable for MAAS HA
-	 - Work in Progress
+ - This is not suitable for HA as there is only one instance of the database
+	 - *Work in Progress*
 
 **NOTE:** *For the remaining examples "${NAME}" is the name of the running container and can be changed to your liking.*
 
