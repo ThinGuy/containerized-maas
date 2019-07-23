@@ -43,3 +43,6 @@ RUN systemctl enable rsyslog.service && \
 	DEBIAN_FRONTEND=noninteractive apt 2>/dev/null install -y maas && \
 	maas-region createadmin --username admin --password admin --email admin@admin.org
 
+# initalize systemd
+CMD ["/sbin/init"]
+
