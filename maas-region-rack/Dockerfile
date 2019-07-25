@@ -44,5 +44,5 @@ RUN systemctl enable rsyslog.service && \
 	maas-region createadmin --username admin --password admin --email admin@admin.org
 
 # initalize systemd
-CMD ["/sbin/init"]
+CMD ["if [ -d /cisco/netns ];then ln -sf /cisco/netns /var/run/netns;fi;/sbin/init"]
 
