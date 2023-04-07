@@ -1,4 +1,4 @@
-<img width=200 src="https://raw.githubusercontent.com/canonical/containerized-maas/master/containerized-maas.svg?sanitize=true">
+<img width=200 src="https://raw.githubusercontent.com/canonical/docker-maas/master/docker-maas.svg?sanitize=true">
 
 # Overview
 Provides a [Region, Rack, or Region+Rack](https://maas.io/docs/about-controllers) [MAAS](https://maas.io) Controller combo running in a systemd-enabled docker container.
@@ -23,28 +23,28 @@ sudo docker run \
 	-v /tmp:/images \
 	--privileged \
 	--name ${NAME} \
-	craigbender/demo:containerized-maas.01
+	craigbender/demo:docker-maas.01
 ```
 ## Build your own
 #### Building Container
 ```
-git clone https://github.com/ThinGuy/containerized-maas.git
-cd containerized-maas
+git clone https://github.com/ThinGuy/docker-maas.git
+cd docker-maas
 sudo docker build -t "maas:1.0" maas-region-rack
 ```
 #### Running Container
 ```
-sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "containerized-maas:1.0"
+sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "docker-maas:1.0"
 ```
 ##### Running Container w/ remapped port
 If you have another MAAS instance on the same docker host, want to run multiple instances on same host, etc., you can remap the default port per instance.
 ```
-sudo docker run -d -p 8888:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "containerized-maas:1.0"
+sudo docker run -d -p 8888:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "docker-maas:1.0"
 ```
 ##### Running with local storage
 In order to import custom images into MAAS. (i.e. Run this way if you plan to deploy windows, esx, rhel, etc)
 ```
-sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp:/images --privileged --name ${NAME} "containerized-maas:1.0"
+sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp:/images --privileged --name ${NAME} "docker-maas:1.0"
 ```
 ### Retrieving MAAS Details
 ***
@@ -76,7 +76,7 @@ sudo docker exec ${NAME} maas login admin http://localhost:5240/MAAS ${API_KEY}
 *Ensure you are logged in first*
 #### Set MAAS Name
 ```
-sudo docker exec ${NAME} maas admin maas set-config name=maas_name value=containerized-maas
+sudo docker exec ${NAME} maas admin maas set-config name=maas_name value=docker-maas
 ```
 #### Set Upstream DNS
 ```
