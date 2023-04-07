@@ -1,4 +1,4 @@
-<img width=200 src="https://raw.githubusercontent.com/canonical/docker-maas/master/docker-maas.svg?sanitize=true">
+<img width=200 src="https://raw.githubusercontent.com/Thinguy/docker-maas/master/docker-maas.svg?sanitize=true">
 
 # Overview
 Provides a [Region, Rack, or Region+Rack](https://maas.io/docs/about-controllers) [MAAS](https://maas.io) Controller combo running in a systemd-enabled docker container.
