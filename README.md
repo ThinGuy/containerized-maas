@@ -1,17 +1,16 @@
-<img width=200 src="https://raw.githubusercontent.com/ThinGuy/svg/master/maas-docker.svg?sanitize=true">
+<img width=200 src="https://raw.githubusercontent.com/canonical/containerized-maas/master/containerized-maas.svg?sanitize=true">
 
 # Overview
-Provides a [MAAS](https://maas.io) [Region](https://docs.maas.io/2.6/en/installconfig-region?_ga=2.81383703.1615335063.1563384348-431451618.1562184839)/[Rack](https://docs.maas.io/2.6/en/installconfig-rack?_ga=2.77126805.1615335063.1563384348-431451618.1562184839) Controller combo running in a systemd-enabled docker container.
+Provides a [Region, Rack, or Region+Rack](https://maas.io/docs/about-controllers) [MAAS](https://maas.io) Controller combo running in a systemd-enabled docker container.
 
 You can build your own following the directions below or run the demo image from docker hub
 
-**Caveats:** 
+**Caveats:**
  - This is a work in progress
  - This has not been through formal QA testing
- - This image is not officially supported by Canonical
+ - This image is not officially supported
  - This runs as a privileged  container
- - This is not suitable for HA as there is only one instance of the database
-	 - *Work in Progress*
+ - This is a *Work in Progress*
 
 **NOTE:** *For the remaining examples "${NAME}" is the name of the running container and can be changed to your liking.*
 
@@ -24,28 +23,28 @@ sudo docker run \
 	-v /tmp:/images \
 	--privileged \
 	--name ${NAME} \
-	craigbender/demo:magenta-box.01
+	craigbender/demo:containerized-maas.01
 ```
 ## Build your own
 #### Building Container
 ```
-git clone https://github.com/ThinGuy/magenta-box.git
-cd magenta-box
-sudo docker build -t "magenta-maas:1.0" maas-region-rack
+git clone https://github.com/ThinGuy/containerized-maas.git
+cd containerized-maas
+sudo docker build -t "maas:1.0" maas-region-rack
 ```
 #### Running Container
 ```
-sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "magenta-maas:1.0"
+sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "containerized-maas:1.0"
 ```
 ##### Running Container w/ remapped port
 If you have another MAAS instance on the same docker host, want to run multiple instances on same host, etc., you can remap the default port per instance.
 ```
-sudo docker run -d -p 8888:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "magenta-maas:1.0"
+sudo docker run -d -p 8888:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --name ${NAME} "containerized-maas:1.0"
 ```
 ##### Running with local storage
 In order to import custom images into MAAS. (i.e. Run this way if you plan to deploy windows, esx, rhel, etc)
 ```
-sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp:/images --privileged --name ${NAME} "magenta-maas:1.0"
+sudo docker run -d -p 5240:5240 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp:/images --privileged --name ${NAME} "containerized-maas:1.0"
 ```
 ### Retrieving MAAS Details
 ***
@@ -77,7 +76,7 @@ sudo docker exec ${NAME} maas login admin http://localhost:5240/MAAS ${API_KEY}
 *Ensure you are logged in first*
 #### Set MAAS Name
 ```
-sudo docker exec ${NAME} maas admin maas set-config name=maas_name value=maas-magenta
+sudo docker exec ${NAME} maas admin maas set-config name=maas_name value=containerized-maas
 ```
 #### Set Upstream DNS
 ```
@@ -91,7 +90,7 @@ sudo docker exec ${NAME} maas admin maas set-config name=dnssec_validation value
 ```
 sudo docker exec ${NAME} maas admin maas set-config name=kernel_opts value='nomodeset console=tty0 console=ttyS0,1152008n'
 ```
-#### Skip MAAS UI Intro screens 
+#### Skip MAAS UI Intro screens
 ```
 sudo docker exec ${NAME} maas admin maas set-config name=completed_intro value=true
 ```
