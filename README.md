@@ -1,4 +1,4 @@
-<img width=200 src="https://raw.githubusercontent.com/canonical/containerized-maas/master/containerized-maas.svg">
+<img width=200 src="https://raw.githubusercontent.com/thinguy/containerized-maas/master/containerized-maas.svg">
 
 # Overview
 Provides a [region, rack, or region+rack](https://maas.io/docs/about-controllers) [MAAS](https://maas.io) controller running in a systemd-enabled + snapd docker container.
@@ -98,15 +98,15 @@ docker run \
   "maas init rack --maas-url ${MAAS_URL} --secret ${MAAS_SECRET};bash"
   
 ```
-<img width=1000 src="https://raw.githubusercontent.com/canonical/containerized-maas/master/docker-ps.svg">
+<img width=1000 src="https://raw.githubusercontent.com/thinguy/containerized-maas/master/docker-ps.svg">
 
-<img width=1000 src="https://raw.githubusercontent.com/canonical/containerized-maas/master/maas-gui.svg">
+<img width=1000 src="https://raw.githubusercontent.com/thinguy/containerized-maas/master/maas-gui.svg">
 
 
 ## Build your own
 #### Building Container
 ```
-git clone https://github.com/canonical/containerized-maas.git
+git clone https://github.com/thinguy/containerized-maas.git
 cd containerized-maas
 docker build -t cmaas:jammy-3.3 maas
 ```
